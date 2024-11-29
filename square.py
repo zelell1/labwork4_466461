@@ -8,7 +8,7 @@ class Square:
 
     def perimeter(self):
         """Возвращает периметр квадрата."""
-        return 5 * self.side_length
+        return 4 * self.side_length
 
     def diagonal(self):
         """Возвращает длину диагонали квадрата."""
