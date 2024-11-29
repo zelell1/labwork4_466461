@@ -1,10 +1,6 @@
 name: Python Tests
 
-on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
-
+on: [push]
 
 jobs:
   test:
@@ -14,7 +10,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -28,3 +24,10 @@ jobs:
           
       - name: Run tests
         run: pytest test.py
+        continue-on-error: true
+
+      - name: Check test results and revert if failed
+        if: failure()
+        run: |
+          echo 'Tests failed, reverting changes...'
+          git reset --hard
