@@ -2,7 +2,7 @@
 
 ## Overview
 
-This library provides a set of classes for handling geometric operations for four common shapes: Circle, Square, Rectangle, and Triangle. With these classes, you can easily calculate properties such as area, perimeter (or circumference in the case of a circle), and more.
+This library provides a set of classes for handling geometric operations for four common shapes: Circle, Square, Rectangle, and Triangle. With these classes, you can easily calculate properties such as area, perimeter (or circumference in the case of a circle), and more. To make changes to the library, the program must pass all tests.
 
 ## Installation
 
