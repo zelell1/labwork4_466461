@@ -1,15 +1,21 @@
-name: Python Tests and Revert on Fail
+name: Python Tests
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
 
 jobs:
-  test_and_revert:
-    runs-on: ubuntu-latest
-
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-        
+        uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -21,13 +27,4 @@ jobs:
           pip install -r requirements.txt
           
       - name: Run tests
-        id: tests
-        run: |
-          pytest test.py
-      - name: Revert changes if tests fail
-        if: failure()
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git revert HEAD --no-edit
-          git push origin HEAD
+        run: pytest test.py
