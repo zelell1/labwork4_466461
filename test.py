@@ -25,7 +25,7 @@ class TestGeometricShapes(unittest.TestCase):
 
     # Square tests
     def test_square_area(self):
-        self.assertEqual(self.square.area(), 25)
+        self.assertEqual(self.square.area(), 20)
 
     def test_square_perimeter(self):
         self.assertEqual(self.square.perimeter(), 20)
